@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('test', [homeController::class, 'index']);
+//Route::get('test', 'homeController@index'); //old style
+Route::get('about', function () {
+    return "Welcome to About Page";
 });
