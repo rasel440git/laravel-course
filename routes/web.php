@@ -18,17 +18,40 @@ use App\Models\tag;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
 
-Route::get('/', [homeController::class, 'index']);
-Route::get('user', [UserController::class, 'create']);
+    $users= User::all();
+    return view('home.index',['user'=>$users]);
+});
+
+Route::get('posts', function () {
+
+    $post= post::all();
+    return view('home.post',['post'=>$post]);
+});
+
+//Route::get('/', [homeController::class, 'index']);
+//Route::get('user', [UserController::class, 'create']);
 //Route::get('test', 'homeController@index'); //old style
 
-Route::get('index', [UserController::class, 'cusdata']);
+//Route::get('index', [UserController::class, 'cusdata']);
 Route::get('index/{id}', [UserController::class, 'find']);
 Route::get('delete/{id}', [UserController::class, 'delete']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('insert', function () {
