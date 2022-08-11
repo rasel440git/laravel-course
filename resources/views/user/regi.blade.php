@@ -14,7 +14,7 @@
             <li>{{$error}}</li>
         @endforeach
         </ul>
-        
+        wwwwwwwwwwwwwwwwww
      <form method="POST" action="/artofcse/laravel-course/public/profile">
         @csrf
 
