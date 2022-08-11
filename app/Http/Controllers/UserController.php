@@ -44,4 +44,17 @@ class UserController extends Controller
     return "user Data insert successfully!!";
 
    }
+
+
+   public function formmake(){
+    return view('user.regi');
+   }
+   public function store(Request $request){
+     $request	->validate([
+      'name'=>'required',
+      'email'=>'required|email',
+      'password'=>'required'
+     ]);
+    return $request->all();
+   }
 }

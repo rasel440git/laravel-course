@@ -6,7 +6,9 @@
        
 @section('content')
 <h2>User Data</h2>
-{{ ($user[1]->email)}};
+@foreach($user as $users)
+{{$users->name}}.</br>
+@endforeach
 @stop  
 
 

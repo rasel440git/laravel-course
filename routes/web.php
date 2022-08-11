@@ -20,9 +20,9 @@ use App\Models\tag;
 
 Route::get('/', function () {
 
-    $users= User::all();
+    $users= User::take(7)->get();
     return view('home.index',['user'=>$users]);
-});
+})->middleware('test');
 
 Route::get('posts', function () {
 
@@ -37,6 +37,10 @@ Route::get('posts', function () {
 //Route::get('index', [UserController::class, 'cusdata']);
 Route::get('index/{id}', [UserController::class, 'find']);
 Route::get('delete/{id}', [UserController::class, 'delete']);
+
+
+Route::get('form',[UserController::class, 'formmake']);
+Route::post('profile',[UserController::class, 'store']);
 
 
 
