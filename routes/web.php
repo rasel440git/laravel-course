@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Requests\myRequest;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\post;
@@ -42,7 +43,9 @@ Route::get('delete/{id}', [UserController::class, 'delete']);
 Route::get('form',[UserController::class, 'formmake']);
 Route::post('profile',[UserController::class, 'store']);
 
-
+Route::get('set_session',[UserController::class,'set']);
+Route::get('get_session',[UserController::class,'getData']);
+Route::get('delete_session',[UserController::class,'deleteSessionData']);
 
 
 

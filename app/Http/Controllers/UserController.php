@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\myRequest;
 use App\Models\User;
 
 class UserController extends Controller
@@ -49,12 +51,31 @@ class UserController extends Controller
    public function formmake(){
     return view('user.regi');
    }
-   public function store(Request $request){
-     $request	->validate([
-      'name'=>'required',
-      'email'=>'required|email',
-      'password'=>'required'
-     ]);
+   public function store(myRequest $request){
+    //  $request	->validate([
+    //   'name'=>'required',
+    //   'email'=>'required|email',
+    //   'password'=>'required'
+    //  ]);
     return $request->all();
    }
+
+   public function set(Request $request){
+     //$request->session()->put('name','Rasel');
+     Session::put('name','Kamrunnessa');
+     session(['address'=>'Senbag']);
+    }
+
+    public function getData(Request $request){
+      //echo $request->session()->get('name');
+      echo Session::get('name');
+      echo session('address');
+     }
+
+     public function deleteSessionData(Request $request){
+       $request->session()->forget('name');
+     }
 }
+
+
+
