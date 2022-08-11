@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Requests\myRequest;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -48,8 +50,9 @@ Route::get('get_session',[UserController::class,'getData']);
 Route::get('delete_session',[UserController::class,'deleteSessionData']);
 
 
-
-
+Route::get('login',[LoginController::class,'index']);
+Route::get('register',[RegisterController::class,'index']);
+Route::post('register',[RegisterController::class,'store']);
 
 
 
