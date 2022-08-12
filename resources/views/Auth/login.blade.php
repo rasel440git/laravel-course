@@ -7,10 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello From Login Page</h1>
-
-    Email: <input type="text" name="email">
-    Password: <input type="text" name="password">
-    <input type="submit" value="Login">
+    <h1>Hello!!! Welcome From Login Page</h1>
+    <form method="POST" accept="/login">
+        @csrf
+        Email: <input type="text" name="email"></br>   
+        Password: <input type="password" name="password">
+                <input type="submit" value="Login">
+    </form>
 </body>
 </html>

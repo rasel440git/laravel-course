@@ -3,6 +3,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ImageUploadController;
 use Illuminate\Http\Requests\myRequest;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -51,12 +52,43 @@ Route::get('delete_session',[UserController::class,'deleteSessionData']);
 
 
 Route::get('login',[LoginController::class,'index']);
+Route::post('login',[LoginController::class,'loginUser']);
 Route::get('register',[RegisterController::class,'index']);
 Route::post('register',[RegisterController::class,'store']);
+Route::get('logout',[LoginController::class,'logout']);
 
+Route::get('test',function(){
+    if(Auth::check()){
+        return Auth::User();
+        //return "Authorized";
+    }
+    else{
+        return "Please login...";
+    }
+});
 
+Route::middleware('auth')->group(function (){
+    Route::get('admin', function(){
+        return "Welcome to Admin";
+        
+    });
+    
+    Route::get('dashboard', function(){
+        return "Welcome to Dashboard";
+    });
 
+    Route::get('update', function(){
+        return "Welcome to Update";
+    });
+    
+});
+//file upload
 
+//Route::get('file-upload','upload.image');
+Route::get('file-upload',[ImageUploadController::class,'imageRoute']);
+Route::post('file-upload',[ImageUploadController::class,'store']);
+Route::get('files',[ImageUploadController::class,'files']);
+Route::get('delete-file',[ImageUploadController::class,'delete']);
 
 
 
